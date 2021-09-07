@@ -95,12 +95,12 @@ export default class Home extends Component {
       });
     });
     getMarketDetails().then((resolve) => {
-      console.log(resolve);
+      // console.log(resolve);
       let data = resolve.data.map((item) => {
         return {
           name: item.name_cn,
-          unitPrice: item.rate.toFixed(2),
-          marketValue: (item.rate * 7).toFixed(2),
+          unitPrice: item.rate,
+          marketValue: item.rate * 7,
         };
       });
       this.setState({
@@ -119,10 +119,10 @@ export default class Home extends Component {
             <View key={index} style={styles.allVirtual}>
               <View style={styles.leftVirtual}>
                 <View style={styles.leftVirtualContent}>
-                  {/*<Image*/}
-                  {/*  source={item.img}*/}
-                  {/*  style={styles.leftVirtualContentImg}*/}
-                  {/*/>*/}
+                  <Image
+                    source={item.img}
+                    style={styles.leftVirtualContentImg}
+                  />
                   <View>
                     <Text style={styles.leftVirtualContentName}>
                       {item.name}
